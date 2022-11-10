@@ -1,0 +1,27 @@
+{
+  "name": "xliff2strings",
+  "version": "0.1.0",
+  "description": "A handy tool to convert Xcode-exported XLIFF file to classic strings file.",
+  "main": "index.js",
+  "bin": {
+    "xliff2strings": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/laosb/xliff2strings"
+  },
+  "author": "Shibo Lyu <github@of.sb>",
+  "license": "MIT",
+  "dependencies": {
+    "args": "^5.0.3",
+    "i18n-strings-files": "^2.0.0",
+    "iconv": "^3.0.1",
+    "xliff": "^6.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}
