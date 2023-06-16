@@ -1,6 +1,6 @@
 {
   "name": "xliff2strings",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A handy tool to convert Xcode-exported XLIFF file to classic strings file.",
   "main": "index.js",
   "bin": {
