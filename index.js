@@ -12,10 +12,17 @@ args.option(
   'Output directory which will contains .strings files.',
   './Strings'
 )
+args.option(
+  'namespacing-separator',
+  'If specified, enables namespacing. All content before the last occurence of the namespacing separator will not be included in the original translation.\n' +
+    'Example: When namespacing-seprator is set to ":::", "Tags:::Item" will result in a .strings entry of "Tags:::Item" = "Item".',
+  ''
+)
 
 const flags = args.parse(process.argv)
 
 const outputDir = flags['output-dir'] ?? './Strings'
+const namespacingSeparator = flags['namespacing-separator']
 const inputFile = args.sub[0]
 
 const main = async () => {
@@ -34,7 +41,10 @@ const main = async () => {
     const output = {}
     for (const id in xliff.resources[namespace]) {
       const { source, target, note } = xliff.resources[namespace][id]
-      output[id] = { text: target ?? source, comment: note }
+      const defaultText = namespacingSeparator
+        ? source.split(namespacingSeparator).slice(-1)
+        : source
+      output[id] = { text: target ?? defaultText, comment: note }
     }
 
     const result = i18nStringsFiles
